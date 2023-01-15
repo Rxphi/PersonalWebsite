@@ -2,15 +2,23 @@
 <html lang="en">
 
 <head>
+  <script type="importmap">
+    {
+      "imports": {
+        "three" : "https://unpkg.com/three@0.138.0/build/three.module.js",
+        "OrbitControls" : "https://unpkg.com/three@0.138.0/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+  </script>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="stylesheet" href="style.css" type="text/css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Raphi's Website!</title>
 </head>
 
 <body>
+  <script type="module" src="main.js"></script>
   <canvas id="bg"></canvas>
-
   <main>
     <!-- Header -->
     <div id="header">
@@ -28,15 +36,18 @@
     <!-- Content -->
     <div id="content">
       <div id="wichtige-links">
-        <h2>Wichtigster Link</h2>
+        <h2>Coole Website</h2>
         <ul>
-          <li><a href="https://n.ethz.ch/~mtaiana" target="_blank" rel="noopener noreferrer">Wilde Website</a>
+          <li><a href="https://n.ethz.ch/~mtaiana" target="_blank" rel="noopener noreferrer">Mattia's Website</a>
           </li>
         </ul>
         <h2>Wichtige Links</h2>
 
         <!-- Mail -->
         <li><a href="https://mail.ethz.ch/owa/#path=/mail" target="_blank" rel="noopener noreferrer">Mail</a></li>
+
+        <!-- VIS -->
+        <li><a href="https://vis.ethz.ch/de/" target="_blank" rel="noopener noreferrer">VIS Website</a></li>
 
         <!-- Polybox -->
         <li><a href="https://polybox.ethz.ch/index.php/login" target="_blank" rel="noopener noreferrer">Polybox</a></li>
@@ -113,8 +124,6 @@
         </ul>
       </div>
   </main>
-
-  <script type="module" src="/main.js"></script>
 </body>
 
 </html>

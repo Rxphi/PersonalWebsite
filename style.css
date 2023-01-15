@@ -6,7 +6,5 @@ canvas {
 
 main {
     position: absolute;
-    align-content: center;
     color: white;
-    height: 300px;
 }

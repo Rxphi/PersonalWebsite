@@ -1,47 +1,80 @@
-import './style.css'
 
-import * as THREE from 'three';
+import {
+    Scene,
+    PerspectiveCamera,
+    WebGLRenderer,
+    AmbientLight,
+    GridHelper,
+    IcosahedronGeometry,
+    MeshStandardMaterial,
+    Mesh,
+    Color,
+    Vector3,
+    BoxGeometry,
+    DodecahedronGeometry,
+    ConeGeometry,
+    OctahedronGeometry,
+    TorusGeometry,
+    TorusKnotGeometry,
+    PointLight,
+} from 'three';
 
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { randFloat, randInt } from 'three/src/math/MathUtils';
-import { Color } from 'three';
+import { OrbitControls } from 'OrbitControls';
+
+// objects
+
+const shapes = [
+    new BoxGeometry(1, 1),
+    new IcosahedronGeometry(1),
+    new DodecahedronGeometry(1),
+    // new CapsuleGeometry(1, 1, 10, 10),
+    new ConeGeometry(1, 2),
+    new OctahedronGeometry(1),
+    new TorusGeometry(1, 0.5, 20, 100),
+    new TorusKnotGeometry(1, 0.2, 100, 10),
+]
 
 // Setup the scene, camera renderer and light
-const scene = new THREE.Scene();
+const scene = new Scene();
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); // FOV, Aspect Ratio, View Frustum
-camera.position.set(0, 15, 25);
+const canvas = document.querySelector("#bg");
+const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); // FOV, Aspect Ratio, View Frustum
+camera.position.set(0, 0, 3);
 
-const renderer = new THREE.WebGLRenderer({
-    canvas: document.querySelector('#bg'),
+var renderer = new WebGLRenderer({
+    canvas,
 })
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.render(scene, camera);
 
-// const pointLight = new THREE.PointLight("white");
-// pointLight.position.set(10, 0, 0)
-// scene.add(pointLight);
-// light helper
-// const lightHelper = new THREE.PointLightHelper(pointLight);
-// scene.add(lightHelper);
-const ambientLight = new THREE.AmbientLight();
-scene.add(ambientLight);
-// axes helper
-// const axesHelper = new THREE.AxesHelper(10);
-// scene.add(axesHelper);
-// grid helper 
-const gridHelper = new THREE.GridHelper(500, 50);
-scene.add(gridHelper);
+// const ambientLight = new AmbientLight();
+// scene.add(ambientLight);
+
+const pointLightRed = new PointLight("red");
+pointLightRed.position.setY(10);
+scene.add(pointLightRed);
+
+const pointLightBlue = new PointLight("blue");
+pointLightBlue.position.setX(10);
+pointLightBlue.position.setY(-10);
+scene.add(pointLightBlue);
+
+const pointLightGreen = new PointLight("green");
+pointLightGreen.position.setX(-10);
+pointLightGreen.position.setY(-10);
+scene.add(pointLightGreen);
 
 // orbit control
 // const controls = new OrbitControls(camera, renderer.domElement);
 
-// Making the Icosahedron
-const geometry = new THREE.IcosahedronGeometry(5, 0);
-const material = new THREE.MeshStandardMaterial({ wireframe: true });
-const object = new THREE.Mesh(geometry, material);
-object.position.set(0, 15, 0);
+
+// creating the object
+var material = new MeshStandardMaterial({ wireframe: true });
+var object = new Mesh();
+object.material = material;
+newGeometry();
+
+// controls.target = object.position;
 
 // Add Icosahedron to the scene
 scene.add(object);
@@ -51,9 +84,9 @@ scene.add(object);
 function animate() {
     requestAnimationFrame(animate);
 
-
-
     rotateObject();
+
+    // controls.update();
 
     // render everything
     renderer.render(scene, camera);
@@ -61,23 +94,45 @@ function animate() {
 
 function rotateObject() {
     object.rotateOnAxis(rotationAxes, 0.002)
-
-    renderer.render(scene, camera);
 }
 
 function changeColors() {
-    console.log("changing colors")
-    const r = randFloat(0, 1);
-    const g = randFloat(0, 1);
-    const b = randFloat(0, 1);
+    console.log("Changed color of the Object!");
+    const r = Math.random();
+    const g = Math.random();
+    const b = Math.random();
 
-
-    material.color = new THREE.Color(r, g, b);
+    material.color = new Color(r, g, b);
 
     renderer.render(scene, camera);
 }
 
-document.body.onclick = changeColors;
-const rotationAxes = new THREE.Vector3(randFloat(0, 1), randFloat(0, 1), randFloat(0, 1)).normalize();
+function newGeometry() {
+    object.geometry = shapes[Math.floor(Math.random() * shapes.length)];
+}
+
+function newRotationAxes() {
+    rotationAxes = new Vector3(Math.random(), Math.random(), Math.random()).normalize();
+}
+
+function resizeCanvas() {
+    console.log("Resized canvas!");
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+window.addEventListener("mousedown", event => {
+    if (event.button == 0) {
+        newGeometry();
+    } else if (event.button == 2) {
+        newRotationAxes();
+    }
+});
+window.addEventListener("mousewheel", changeColors);
+window.addEventListener("resize", resizeCanvas);
+
+var rotationAxes = new Vector3(Math.random(), Math.random(), Math.random()).normalize();
+
 renderer.render(scene, camera);
 animate();
