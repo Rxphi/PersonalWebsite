@@ -47,22 +47,25 @@ var renderer = new WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// const ambientLight = new AmbientLight();
-// scene.add(ambientLight);
+const ambientLight = new AmbientLight();
+scene.add(ambientLight);
 
-const pointLightRed = new PointLight("red");
-pointLightRed.position.setY(10);
-scene.add(pointLightRed);
+var editing = "";
+var deltaColor = [0.01, 0.01, 0.01];
 
-const pointLightBlue = new PointLight("blue");
-pointLightBlue.position.setX(10);
-pointLightBlue.position.setY(-10);
-scene.add(pointLightBlue);
+// const pointLightRed = new PointLight("red");
+// pointLightRed.position.setY(10);
+// scene.add(pointLightRed);
 
-const pointLightGreen = new PointLight("green");
-pointLightGreen.position.setX(-10);
-pointLightGreen.position.setY(-10);
-scene.add(pointLightGreen);
+// const pointLightBlue = new PointLight("blue");
+// pointLightBlue.position.setX(10);
+// pointLightBlue.position.setY(-10);
+// scene.add(pointLightBlue);
+
+// const pointLightGreen = new PointLight("green");
+// pointLightGreen.position.setX(-10);
+// pointLightGreen.position.setY(-10);
+// scene.add(pointLightGreen);
 
 // orbit control
 // const controls = new OrbitControls(camera, renderer.domElement);
@@ -97,13 +100,31 @@ function rotateObject() {
 }
 
 function changeColors() {
-    console.log("Changed color of the Object!");
-    const r = Math.random();
-    const g = Math.random();
-    const b = Math.random();
-
-    material.color = new Color(r, g, b);
-
+    switch (editing) {
+        case "r":
+            console.log("Red");
+            if (Math.abs(material.color.r + deltaColor[0] - 0.5) > 0.5) {
+                deltaColor[0] *= -1;
+            }
+            material.color.r = (material.color.r + deltaColor[0]);
+            break;
+        case "g":
+            console.log("Green");
+            if (Math.abs(material.color.g + deltaColor[1] - 0.5) > 0.5) {
+                deltaColor[1] *= -1;
+            }
+            material.color.g = (material.color.g + deltaColor[1]);
+            break;
+        case "b":
+            console.log("Blue");
+            if (Math.abs(material.color.b + deltaColor[2] - 0.5) > 0.5) {
+                deltaColor[2] *= -1;
+            }
+            material.color.b = (material.color.b + deltaColor[2]);
+            break;
+        default:
+            material.color = new Color("black");
+    }
     renderer.render(scene, camera);
 }
 
@@ -129,10 +150,26 @@ window.addEventListener("mousedown", event => {
         newRotationAxes();
     }
 });
+
+window.addEventListener("keypress", function (e) {
+    if (e.key === "r") {
+        editing = "r";
+    } else if (e.key === "g") {
+        editing = "g";
+    } else if (e.key === "b") {
+        editing = "b";
+    } else if (e.key === "Enter") {
+        editing = "";
+    }
+})
+
+
 window.addEventListener("mousewheel", changeColors);
 window.addEventListener("resize", resizeCanvas);
 
 var rotationAxes = new Vector3(Math.random(), Math.random(), Math.random()).normalize();
+
+var changeColorVector
 
 renderer.render(scene, camera);
 animate();
