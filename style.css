@@ -9,6 +9,12 @@
     --color2: #F3FDE8;
     --color3: #FFE5E5;
     --color4: #FFBFBF;
+    --headerSize: 15vh;
+    --headerBackground: linear-gradient(white, white);
+    --gapBtwSections: 500px;
+    --SectionTitleSize: 3rem;
+    --GapAfterSectionTitle: 5vh;
+    --contactLogoHeight: 100px;
 }
 
 * {
@@ -24,10 +30,6 @@ html {
     scroll-behavior: smooth;
 }
 
-p {
-    color: rgb(85, 85, 85);
-}
-
 /* TRANSITION */
 a, 
 .btn {
@@ -41,33 +43,37 @@ nav,
 }
 
 nav {
+    position: fixed;
     justify-content: space-around;
     align-items: center;
-    height: 15vh;
+    background-image: var(--headerBackground);
+    height: var(--headerSize);
+    width: 100%;
 }
 
 .nav-links {
     gap: 2rem;
     list-style: none;
+}
+
+.nav-links a {
     font-size: 1.5rem;
 }
 
 a {
     color: black;
     text-decoration: none;
-    text-decoration-color: white;
 }
 
 a:hover {
-    color: grey;
     text-decoration: underline;
     text-underline-offset: 0.5rem;
-    text-decoration-color: red;
+    text-decoration-color: black;
 }
 
 .logo {
     font-family: 'Qwitcher Grypen', cursive;
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 .logo:hover {
@@ -156,7 +162,138 @@ a:hover {
 
 /* SECTIONS */
 
-#Footer {
-    position: absolute;
-    bottom: 0;
+#AllSections {
+    padding-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: var(--gapBtwSections);
+}
+
+section {
+    margin-top: - var(--headerSize);
+    padding-top: var(--headerSize);
+}
+
+section h1 {
+    font-size: var(--SectionTitleSize);
+    text-align: center;
+    font-weight: normal;
+}
+
+/* ABOUT */
+#About {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--GapAfterSectionTitle);
+}
+
+#About p {
+    color: black;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 75%;
+}
+
+/* LECTURES */
+#Lectures {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--GapAfterSectionTitle);
+}
+
+#AllSemester {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+}
+
+#Lectures li {
+    margin: 10px;
+}
+
+#Lectures a {
+    padding: 5px;
+    border-radius: 20px;
+}
+
+#Lectures a:hover {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+}
+
+#Lectures ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.Semester {
+    flex-grow: 1;
+}
+
+.Semester h1 {
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.Fach h2 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    text-decoration-line: underline;
+}
+
+/* COOL LINKS */
+
+#CoolLinks {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: var(--GapAfterSectionTitle);
+}
+
+.links {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.links a {
+    margin: 20px;
+    padding: 10px;
+    border-radius: 40px;
+    color: white;
+    background-color: black;
+}
+
+.links a:hover {
+    color: black;
+    border-color: black;
+    background-color: white;
+    text-decoration: none;
+}
+
+/* CONTACT */
+
+#Contact {
+    /* height: 30vh; */
+    display: flex;
+    flex-direction: column;
+    gap: var(--GapAfterSectionTitle);
+    padding-bottom: calc(3*var(--headerSize));
+}
+
+.contactLinks {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+#Contact a img {
+    height: var(--contactLogoHeight);
 }

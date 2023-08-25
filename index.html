@@ -6,16 +6,17 @@
     <title>Raphi's Website</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
+    <link rel="icon" href="assets/ProfilePicture.jpg">
 </head>
 <body>
     <nav id="desktop-nav">
         <div class="logo">Raphaël Larisch</div>
         <div>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#BachelorLinks">Links</a></li>
-                <li><a href="#CoolWebsited">Cool Websites</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Lectures">Lectures</a></li>
+                <li><a href="#CoolLinks">Cool Links</a></li>
+                <li><a href="#Contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -29,25 +30,163 @@
                 <span></span>
             </div>
             <div class="menu-links">
-                <li><a href="#about" onclick="toggleMenu()">About</a></li>
-                <li><a href="#BachelorLinks" onclick="toggleMenu()">Links</a></li>
-                <li><a href="#CoolWebsited" onclick="toggleMenu()">Cool Websites</a></li>
-                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+                <li><a href="#About" onclick="toggleMenu()">About</a></li>
+                <li><a href="#Lectures" onclick="toggleMenu()">Lectures</a></li>
+                <li><a href="#CoolLinks" onclick="toggleMenu()">Cool Links</a></li>
+                <li><a href="#Contact" onclick="toggleMenu()">Contact</a></li>
             </div>
         </div>
     </nav>
 
-    <section id="profile">
+    <div id="AllSections">
+        <section id="About">
+            <h1>About</h1>
+            <p>Welcome this is my personal website! Go around and explore the links.
+                If you are a fellow student at ETH Zurich you may not know it, but you also have a personal website! 
+                You can find the instructions for it <a href="https://ethz.ch/staffnet/en/it-services/catalogue/web-application-hosting/personal-website.html">here</a>!
+            </p>
+        </section>
 
-    </section>
+        <section id="Lectures">
+            <h1>Lectures</h1>
+            <div id="AllSemester">
+                <div id="1.Semester" class="Semester">
+                    <h1>1. Semester</h1>
+                    <div id="AnD" class="Fach">
+                        <h2>Algorithmen und Datenstrukturen</h2>
+                        <ul>
+                            <li><a href="https://cadmo.ethz.ch/education/lectures/HS22/DA/index.html">Vorlesungswebsite</a></li>
+                            <li><a href="https://moodle-app2.let.ethz.ch/course/view.php?id=18008">Moodle</a></li>
+                            <li><a href="https://cadmo.ethz.ch/education/lectures/HS16/DA/skript/skript.pdf">Skript</a></li>
+                            <li><a href="https://expert.ethz.ch">Code Expert</a></li>
+                        </ul>
+                    </div>
+                    <div id="DiskMath" class="Fach">
+                        <h2>Diskrete Mathematik</h2>
+                        <ul>
+                            <li><a href="https://crypto.ethz.ch/teaching/DM22/">Vorlesungswebsite</a></li>
+                            <li><a href="https://crypto.ethz.ch/teaching/DM22/ln/DM22_LN_tablet_z21nvff0ch2gj1ol0mt1.pdf">Skript</a></li>
+                        </ul>
+                    </div>
+                    <div id="EProg" class="Fach">
+                        <h2>Einführung in die Programmierung</h2>
+                        <ul>
+                            <li><a href="https://www.lst.inf.ethz.ch/education/einfuehrung-in-die-programmierung-i--252-0027-1.html">Vorlesungswebsite</a></li>
+                        </ul>
+                    </div>
+                    <div id="LinAlg" class="Fach">
+                        <h2>Lineare Algebra</h2>
+                        <ul>
+                            <li><a href="https://igl.ethz.ch/teaching/linear-algebra/la2022/">Vorlesungswebsite</a></li>
+                            <li><a href="https://moodle-app2.let.ethz.ch/course/view.php?id=18208">Moodle</a></a></li>
+                            <li><a href="https://igl.ethz.ch/teaching/linear-algebra/la2021/LAS11_script.pdf">Skript</a></li>
+                        </ul>
 
-    <h1>Website is being updated :)</h1>
+                    </div>
+                </div>
+                <div id="2.Semester" class="Semester">
+                    <h1>2. Semester</h1>
+                    <div id="AnW" class="Fach">
+                        <h2>Algorithmen und Wahrscheinlichkeit</h2>
+                        <ul>
+                            <li><a href="https://moodle-app2.let.ethz.ch/course/view.php?id=19231">Moodle</a></li>
+                            <li><a href="https://moodle-app2.let.ethz.ch/pluginfile.php/1558106/mod_resource/content/1/A_W_Skript_25_Mai_2023.pdf?redirect=1">Skript</a></li>
+                            <li><a href="https://expert.ethz.ch">Code Expert</a></li>
+                        </ul>
+                    </div>
+                    <div id="AnalysisI" class="Fach">
+                        <h2>Analysis I</h2>
+                        <ul>
+                            <li><a href="https://metaphor.ethz.ch/x/2023/fs/401-0212-16L/">Vorlesungswebsite</a></li>
+                            <li><a href="https://metaphor.ethz.ch/x/2023/fs/401-0212-16L/sc/skript-analysis-I.pdf">Skript</a></li>
+                            <li><a href="https://moodle-app2.let.ethz.ch/course/view.php?id=17981#section-1">Integral Trainer</a></li>
+                        </ul>
+                    </div>
+                    <div id="PProg" class="Fach">
+                        <h2>Parallele Programmierung</h2>
+                        <ul>
+                            <li><a href="https://spcl.inf.ethz.ch/Teaching/2023-pp/">Vorlesungswebsite</a></li>
+                            <li><a href="https://moodle-app2.let.ethz.ch/course/view.php?id=19699">Moodle</a></li>
+                        </ul>
+                    </div>
+                    <div id="DDCA" class="Fach">
+                        <h2>Digital Design and Computer Architecture</h2>
+                        <ul>
+                            <li><a href="https://moodle-app2.let.ethz.ch/course/view.php?id=18208">Moodle</a></a></li>
+                            <li><a href="https://igl.ethz.ch/teaching/linear-algebra/la2022/">Vorlesungswebsite</a></li>
+                            <li><a href="https://igl.ethz.ch/teaching/linear-algebra/la2021/LAS11_script.pdf">Skript</a></li>
+                        </ul>
 
-    <div id="Footer">
-        <a href="http://n.ethz.ch/~mtaiana">Visit Mattia</a> 
+                    </div>
+        
+                </div>
+                <div id="3.Semester" class="Semester">
+                    <h1>3. Semester</h1>
+                    <div id="AnalysisII" class="Fach">
+                        <h2>Analysis II</h2>
+                        <ul>
+                        </ul>
+                    </div>
+                    <div id="NumCS" class="Fach">
+                        <h2>Numerical Methods for Computer Science</h2>
+                        <ul>
+                        </ul>
+                    </div>
+                    <div id="SysProg" class="Fach">
+                        <h2>Systems Programming and Computer Architecture</h2>
+                        <ul>
+                        </ul>
+                    </div>
+                    <div id="TheoInf" class="Fach">
+                        <h2>Theoretische Informatik</h2>
+                        <ul>
+                        </ul>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="CoolLinks">
+            <h1>Cool Links</h1>
+            <br>
+            <div class="links">
+                <a href="https://projecteuler.net/progress">Project Euler</a>
+                <a href="https://adventofcode.com/">Advent Of Code</a>
+                <a href="https://some.3b1b.co/">SoME</a>
+                <a href="http://n.ethz.ch/~mtaiana">Visit Mattia</a>
+                <a href="https://www.shadertoy.com/">Shadertoy</a>
+                <a href="https://leetcode.com/problemset/all/">LeetCode</a>
+                <a href="https://vis.ethz.ch/de/">VIS</a>
+                <a href="https://visualgo.net/en">Visualgo</a>
+                <a href="https://www.acm.org/">ACM</a>
+                <a href="https://www.nerdfonts.com/">NerdFonts</a>
+                <a href="https://ubuntu.com/download/desktop">Download Ubuntu</a>
+                <a href="https://github.com">Github</a>
+                <a href="https://inf.ethz.ch/de/">D-INFK</a>
+                <a href="https://codeforces.com/?f0a28=1&locale=en">Codeforces</a>
+                <a href="https://github.com/Rxphi/PersonalWebsite">View the Code of this Website!</a>
+                <a href="https://www.qiskit.org/">Qiskit</a>
+                <a href="https://www.freecodecamp.org/learn">FreeCodeCamp</a>
+                <a href="https://soi.ch/">SOI</a>
+                <a href="https://colorhunt.co/">ColorHunt</a>
+                <a href="https://youtube.com/playlist?list=PLlH3OUbwFcVQWzT1gmVc4UZoBDUkladqm&si=fxR33UgvISWOfaYi">ETH Basisprüfung Playlist</a>
+                <a href="https://youtube.com/playlist?list=PLlH3OUbwFcVRjEJMJBrD1m4RTPgsGt9xh&si=7I-vDtW0H9VtZQM9">Science & Engineering Playlist</a>
+            </div>
+            
+        </section>
+
+        <section id="Contact">
+            <h1>Contact</h1>
+            <div class="contactLinks">
+                <a href="https://github.com/Rxphi"><img src="assets/GitHub.png" alt="Github"></a>
+                <a href="mailto:rlarisch@student.ethz.ch"><img src="assets/Mail.png" alt="Email"></a>
+                <a href="https://www.linkedin.com/in/rapha%C3%ABl-larisch-26a326232/"><img src="assets/LinkedIn.png" alt="LinkedIn"></a>
+            </div>
+        </section>
     </div>
 
-    <script src="collapsible.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
