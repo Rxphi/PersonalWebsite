@@ -4,19 +4,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;700&display=swap');
 
+/* Default Light Mode */
 :root {
-    --color1: #A8DF8E;
-    --color2: #F3FDE8;
-    --color3: #FFE5E5;
-    --color4: #FFBFBF;
-    --headerSize: 15vh;
+    --background-color: white;
+    --text-color: black;
     --headerBackground: linear-gradient(white, white);
+
+    --headerSize: 15vh;
     --gapBtwSections: 500px;
     --SectionTitleSize: 3rem;
     --GapAfterSectionTitle: 5vh;
     --contactLogoHeight: 100px;
 }
 
+/* Dark Mode */
+[theme="dark"] {
+    --background-color: black;
+    --text-color: white;
+    --headerBackground: linear-gradient(black, black);
+}
+
+/* GENERAL */
 * {
     padding: 0;
     margin: 0;
@@ -24,10 +32,16 @@
 
 body {
     font-family: 'Source Code Pro', monospace;
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+a, a:visited {
+    color: var(--text-color)
 }
 
 /* TRANSITION */
@@ -36,16 +50,25 @@ a,
     transition: all 300ms ease;
 }
 
+/* Theme icon */
+.icon.color-icon{
+    cursor: pointer;
+    height: 2rem;
+    display: flex;
+    margin: auto;
+    padding: 10px;
+}
+
 /* DESKTOP-NAV */
 nav, 
 .nav-links {
     display: flex;
+    align-items: center;
 }
 
 nav {
     position: fixed;
     justify-content: space-around;
-    align-items: center;
     background-image: var(--headerBackground);
     height: var(--headerSize);
     width: 100%;
@@ -54,21 +77,17 @@ nav {
 .nav-links {
     gap: 2rem;
     list-style: none;
-}
-
-.nav-links a {
     font-size: 1.5rem;
 }
 
-a {
-    color: black;
+.nav-links a {
     text-decoration: none;
 }
 
-a:hover {
+.nav-links a:hover {
     text-decoration: underline;
     text-underline-offset: 0.5rem;
-    text-decoration-color: black;
+    text-decoration-color: var(--text-color);
 }
 
 .logo {
@@ -103,7 +122,7 @@ a:hover {
 .hamburger-icon span {
     width: 100%;
     height: 2px;
-    background-color: black;  
+    background-color: var(--text-color);  
     transition: all 0.3 ease-in-out; 
 }
 
@@ -111,7 +130,7 @@ a:hover {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: white;
+    background-color: var(--background-color);
     width: fit-content;
     max-height: 0;
     overflow: hidden;
@@ -123,7 +142,7 @@ a:hover {
     padding: 10px;
     text-align: center;
     font-size: 1.5rem;
-    color: black;
+    color: var(--text-color);
     text-decoration: none;
     transition: all 0.3 ease-in-out;
 }
@@ -163,6 +182,8 @@ a:hover {
 /* SECTIONS */
 
 #AllSections {
+    width: 80%;
+    margin: auto;
     padding-top: 15vh;
     display: flex;
     flex-direction: column;
@@ -190,7 +211,7 @@ section h1 {
 }
 
 #About p {
-    color: black;
+    color: var(--text-color);
     font-size: 1.5rem;
     text-align: center;
     width: 75%;
@@ -219,12 +240,13 @@ section h1 {
 #Lectures a {
     padding: 5px;
     border-radius: 20px;
+    text-decoration: none;
 }
 
 #Lectures a:hover {
     text-decoration: none;
-    color: white;
-    background-color: black;
+    color: var(--background-color);
+    background-color: var(--text-color);
 }
 
 #Lectures ul {
@@ -267,15 +289,14 @@ section h1 {
     margin: 20px;
     padding: 10px;
     border-radius: 40px;
-    color: white;
-    background-color: black;
+    color: var(--background-color);
+    background-color: var(--text-color);
+    text-decoration: none;
 }
 
 .links a:hover {
-    color: black;
-    border-color: black;
-    background-color: white;
-    text-decoration: none;
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
 /* CONTACT */
@@ -293,7 +314,14 @@ section h1 {
     justify-content: center;
     gap: 30px;
 }
+#githubIcon {
+    height: var(--contactLogoHeight);
+}
 
-#Contact a img {
+#mailIcon {
+    height: calc(1.5 * var(--contactLogoHeight));
+}
+
+#linkedinIcon {
     height: var(--contactLogoHeight);
 }
